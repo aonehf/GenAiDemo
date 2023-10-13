@@ -1,6 +1,9 @@
 import streamlit as st
 import uuid
 import sys
+from PIL import Image
+from urllib.request import urlopen
+import imageio
 
 import kendra_chat_anthropic as anthropic
 import kendra_chat_flan_xl as flanxl
@@ -12,10 +15,14 @@ import kendra_chat_bedrock_titan as bedrock_titan
 import kendra_chat_bedrock_claude as bedrock_claude
 import kendra_chat_bedrock_claudev2 as bedrock_claudev2
 
-
+st.set_page_config(page_title='AWS Sustainability Demo', page_icon=':tada:', layout='wide')
+url = 'https://d0.awsstatic.com/logos/powered-by-aws.png'
+image = imageio.v2.imread(url)
+st.image(image, caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 
 USER_ICON = "images/user-icon.png"
 AI_ICON = "images/ai-icon.png"
+LOGO = "images/logo.webp"
 MAX_HISTORY_LENGTH = 5
 PROVIDER_MAP = {
     'openai': 'Open AI',
